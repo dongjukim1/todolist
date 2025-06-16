@@ -18,13 +18,13 @@ def create_todo(db: Session, todo: item.ToDoInputItem):
 
     return db_todo
 
-def update_completed_todo(db: Session, id: int):
-    todo_item=db.query(ToDo).filter(ToDo.id==id).first()
+def update_completed_todo(db: Session, id: int, completed: str):
+    todo_item = db.query(ToDo).filter(ToDo.id == id).first()
 
     if not todo_item:
         raise HTTPException(status_code=404, detail="The provided ID does not exist")
     
-    todo_item.completed = True
+    todo_item.completed = completed
     db.commit()
 
     return todo_item

@@ -24,8 +24,8 @@ def add_todo(todo: item.ToDoInputItem, db: Session = Depends(get_db)):
     return crud.create_todo(db=db, todo=todo)
 
 @router.patch("/todos/{id}", response_model=item.ToDoItem)
-def completed_todo(id: int, db: Session = Depends(get_db)):
-    return crud.update_completed_todo(id=id, db=db)
+def completed_todo(id: int, completed: item.ToDoCompletedUpdate, db: Session = Depends(get_db)):
+    return crud.update_completed_todo(id=id, completed=completed.completed, db=db)
 
 @router.delete("/todos/{id}", response_model=item.ToDoItem)
 def deleted_todo(id:int, db: Session = Depends(get_db)):
