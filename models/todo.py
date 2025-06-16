@@ -8,6 +8,6 @@ class ToDo(Base):
     id = Column(Integer, primary_key=True, index=True)
     title = Column(String, index=True)
     description = Column(String, default=None)
-    completed = Column(Boolean, default=False)
+    completed = Column(String, default="Pending")
     created_at = Column(DateTime, default=datetime.now())
     updated_at = Column(DateTime, default=datetime.now())
